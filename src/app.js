@@ -20,7 +20,7 @@ const cors=require("cors")
 const app = express()
 app.set("trust proxy", 1);
 app.use(cors({
- origin: 'https://mustify-frontend.onrender.com',
+ origin: "https://mustify.onrender.com",
  credentials: true
 }))
 app.use(cookie())
@@ -29,7 +29,7 @@ app.use((session({
     resave: false,
     saveUninitialized: false,
     secret: env.sessionToken,
-     cookie: { maxAge: 60 * 60 * 1000, httpOnly: true,sameSite: "none",   // 🔥 REQUIRED
+     cookie: { maxAge: 60 * 60 * 1000, httpOnly: true,sameSite: "strict",  
     secure: true  },
     store: mongo.MongoStore.create({ mongoUrl: env.sessionDB, collectionName: "sessions" })
 
