@@ -17,7 +17,7 @@ async function verify(req, res, next) {
         const accessToken = jwt.sign({ UserName: findUser.UserName, Email: findUser.Email }, env.accessToken, { expiresIn: '15m' })
 
         req.session.user={userid:findUser._id,role:findUser.Role}
-        res.cookie("refreshToken", refreshtoken, { httpOnly: true, secure: true, sameSite: "strict", maxAge: 1000*60*60 })
+        res.cookie("refreshToken", refreshtoken, { httpOnly: true, secure: true, sameSite: "none", maxAge: 1000*60*60 })
         res.header("Authorization",`Bearer ${accessToken}`)
         next()
     }
