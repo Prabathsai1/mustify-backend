@@ -18,9 +18,9 @@ const adminVerification = require("./middleware/adminVerification.js")
 const WaitingApprovalData=require("./routers/music.routes/adminData.route.js")
 const cors=require("cors")
 const app = express()
-
+app.set("trust proxy", 1);
 app.use(cors({
- origin: 'http://localhost:5173',
+ origin: 'https://mustify-frontend.onrender.com',
  credentials: true
 }))
 app.use(cookie())
